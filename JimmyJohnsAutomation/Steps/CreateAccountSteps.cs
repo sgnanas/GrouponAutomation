@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace JimmyJohnsAutomation.Steps
@@ -10,6 +11,9 @@ namespace JimmyJohnsAutomation.Steps
     public sealed class CreateAccountSteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
+
+        IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>("IWebDriver");
+
 
         [Given("I have entered (.*) into the calculator")]
         public void GivenIHaveEnteredSomethingIntoTheCalculator(int number)

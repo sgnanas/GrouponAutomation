@@ -13,12 +13,23 @@ namespace JimmyJohnsAutomation.Steps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
 
+        IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>("IWebDriver");
+
         [Given(@"I go to the Jimmy John Home Page")]
         public void GivenIGoToTheJimmyJohnHomePage()
         {
-            ScenarioContext.Current.Get<IWebDriver>("IWebDriver")
-                .Navigate()
-                .GoToUrl(ConfigurationManager.AppSettings["HomePageURL"]);
+            
+            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["HomePageURL"]);
+        }
+
+        [Given(@"I go to the Create account page")]
+        public void GivenIGoToTheCreateAccountPage()
+        {
+            IWebElement loginButton = driver.FindElement(By.Id("linkOderLogin"));
+            loginButton.Click();
+
+            IWebElement createNewAccountLink = driver.FindElement(By.XPath("//a[@title='Click to Create an account']"));
+            createNewAccountLink.Click();
         }
 
     }
