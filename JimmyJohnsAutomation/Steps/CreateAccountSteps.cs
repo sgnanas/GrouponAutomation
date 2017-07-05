@@ -10,37 +10,43 @@ namespace JimmyJohnsAutomation.Steps
     [Binding]
     public sealed class CreateAccountSteps
     {
-        // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
-
+       
         IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>("IWebDriver");
 
 
-        [Given("I have entered (.*) into the calculator")]
-        public void GivenIHaveEnteredSomethingIntoTheCalculator(int number)
+        [When(@"I create a new account")]
+        public void WhenICreateANewAccount()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see http://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
+            IWebElement FirstNameTextBox = driver.FindElement(By.XPath("//input[@name='FirstName']"));
+            IWebElement LastNameTextBox = driver.FindElement(By.XPath("//input[@name='LastName']"));
+            IWebElement PhoneNumberTextBox = driver.FindElement(By.XPath("//input[@id='phone_0']"));
+            IWebElement EmailTextBox = driver.FindElement(By.XPath("//input[@id='email']"));
+            IWebElement ConfirmEmailTextBox = driver.FindElement(By.XPath("//input[@id='emailConfirm']"));
+            IWebElement PasswordTextBox = driver.FindElement(By.XPath("//input[@id='password']"));
+            IWebElement PasswordConfirmTextBox = driver.FindElement(By.XPath("//input[@id='passwordConfirm']"));
+            IWebElement TermsAndConditionsCheckBox = driver.FindElement(By.XPath("//a[@id='chkTermsAndConditions']"));
+            IWebElement CreateAccountButton = driver.FindElement(By.XPath("//a[@id='createAccountBtn']"));
 
-            ScenarioContext.Current.Pending();
+
+            FirstNameTextBox.SendKeys("Jimmy4");
+            LastNameTextBox.SendKeys("JOBO4");
+            PhoneNumberTextBox.SendKeys("3039139999");
+            EmailTextBox.SendKeys("ktice@blah4.com");
+            ConfirmEmailTextBox.SendKeys("ktice@blah4.com");
+            PasswordTextBox.SendKeys("BlahPassword6");
+            PasswordConfirmTextBox.SendKeys("BlahPassword6");
+            TermsAndConditionsCheckBox.Click();
+            CreateAccountButton.Click();
+
         }
 
-        [When("I press add")]
-        public void WhenIPressAdd()
+        [Then(@"the Jimmy John user is created")]
+        public void ThenTheJimmyJohnUserIsCreated()
         {
-            //TODO: implement act (action) logic
-
-            ScenarioContext.Current.Pending();
+            IWebElement StartAnOrderText = 
+                driver.FindElement(By.XPath("//h1[contains(text(),'Start an Order')]"));
         }
 
-        [Then("the result should be (.*) on the screen")]
-        public void ThenTheResultShouldBe(int result)
-        {
-            //TODO: implement assert (verification) logic
 
-            ScenarioContext.Current.Pending();
-        }
     }
 }
