@@ -41,6 +41,7 @@ namespace JimmyJohnsAutomation.Hooks
                 Console.WriteLine(ex.Message);
             }
             
+            //Add WebDriver to the ScenarioContext
             ScenarioContext.Current.Set(
                 GetWebDriver(browser),
                 "IWebDriver");            
