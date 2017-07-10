@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
@@ -78,6 +79,8 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
                 case "":
@@ -93,6 +96,8 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
                 case "ie":
@@ -102,6 +107,19 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
+                    break;
+
+                case "edge":
+
+                    //Instantiate Driver
+                    driver = new EdgeDriver(Path.Combine(GetBasePath, @"Drivers"));
+
+                    //Set Implicit Wait time to 10 seconds
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
                 case "firefox":
@@ -116,6 +134,8 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
                 case "phantomjs":
@@ -125,6 +145,8 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
                 default:
@@ -140,6 +162,8 @@ namespace JimmyJohnsAutomation.Hooks
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().DefaultContent();
                     break;
 
             }

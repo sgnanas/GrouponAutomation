@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using Faker;
 
 namespace JimmyJohnsAutomation.Steps
 {
@@ -25,17 +26,20 @@ namespace JimmyJohnsAutomation.Steps
             IWebElement PasswordTextBox = driver.FindElement(By.XPath("//input[@id='password']"));
             IWebElement PasswordConfirmTextBox = driver.FindElement(By.XPath("//input[@id='passwordConfirm']"));
             IWebElement TermsAndConditionsCheckBox = driver.FindElement(By.XPath("//a[@id='chkTermsAndConditions']"));
-            IWebElement CreateAccountButton = driver.FindElement(By.XPath("//a[@id='createAccountBtn']"));
+            IWebElement CreateAccountButton = driver.FindElement(By.CssSelector("//a[@id='createAccountBtn']"));
 
 
 
-            FirstNameTextBox.SendKeys("Jimmy7");
-            LastNameTextBox.SendKeys("JOBO7");
-            PhoneNumberTextBox.SendKeys("3039139999");
-            EmailTextBox.SendKeys("ktice@blah7.com");
-            ConfirmEmailTextBox.SendKeys("ktice@blah7.com");
-            PasswordTextBox.SendKeys("BlahPassword6");
-            PasswordConfirmTextBox.SendKeys("BlahPassword6");
+            string email = Internet.Email();
+            string password = "BlahPassword6";
+
+            FirstNameTextBox.SendKeys(Name.First());
+            LastNameTextBox.SendKeys(Name.Last());
+            PhoneNumberTextBox.SendKeys(Phone.Number());
+            EmailTextBox.SendKeys(email);
+            ConfirmEmailTextBox.SendKeys(email);
+            PasswordTextBox.SendKeys(password);
+            PasswordConfirmTextBox.SendKeys(password);
             TermsAndConditionsCheckBox.Click();
             CreateAccountButton.Click();
 
