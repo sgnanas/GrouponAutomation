@@ -12,6 +12,8 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
+using TechTalk.SpecRun.Common.Helper;
+
 
 namespace JimmyJohnsAutomation.Hooks
 {
@@ -23,9 +25,24 @@ namespace JimmyJohnsAutomation.Hooks
         [BeforeScenario]
         public void BeforeScenario()
         {
+            string browser = String.Empty;
 
+            try
+            {
+                if (ConfigurationManager.AppSettings["Browser"].ToLower().IsNotNullOrEmpty())
+                {
+                    browser = ConfigurationManager.AppSettings["Browser"].ToLower();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                browser = String.Empty;
+                Console.WriteLine(ex.Message);
+            }
+            
             ScenarioContext.Current.Set(
-                GetWebDriver(ConfigurationManager.AppSettings["Browser"].ToLower()),
+                GetWebDriver(browser),
                 "IWebDriver");            
 
         }
@@ -55,6 +72,21 @@ namespace JimmyJohnsAutomation.Hooks
                     options.AddArguments("disable-infobars");
                     options.AddUserProfilePreference("credentials_enable_service", false);
                     
+                    //Instantiate Driver
+                    driver = new ChromeDriver(Path.Combine(GetBasePath, @"Drivers\"), options);
+
+                    //Set Implicit Wait time to 10 seconds
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    break;
+
+                case "":
+
+                    // Open a Chrome browser.
+                    options = new ChromeOptions();
+                    options.AddArguments("--disable-extensions");
+                    options.AddArguments("disable-infobars");
+                    options.AddUserProfilePreference("credentials_enable_service", false);
+
                     //Instantiate Driver
                     driver = new ChromeDriver(Path.Combine(GetBasePath, @"Drivers\"), options);
 
