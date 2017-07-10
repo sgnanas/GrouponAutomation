@@ -28,11 +28,11 @@ namespace JimmyJohnsAutomation.Steps
             IWebElement CreateAccountButton = driver.FindElement(By.XPath("//a[@id='createAccountBtn']"));
 
 
-            FirstNameTextBox.SendKeys("Jimmy4");
-            LastNameTextBox.SendKeys("JOBO4");
+            FirstNameTextBox.SendKeys("Jimmy7");
+            LastNameTextBox.SendKeys("JOBO7");
             PhoneNumberTextBox.SendKeys("3039139999");
-            EmailTextBox.SendKeys("ktice@blah4.com");
-            ConfirmEmailTextBox.SendKeys("ktice@blah4.com");
+            EmailTextBox.SendKeys("ktice@blah7.com");
+            ConfirmEmailTextBox.SendKeys("ktice@blah7.com");
             PasswordTextBox.SendKeys("BlahPassword6");
             PasswordConfirmTextBox.SendKeys("BlahPassword6");
             TermsAndConditionsCheckBox.Click();
