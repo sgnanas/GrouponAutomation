@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Faker;
 using OpenQA.Selenium.Support.UI;
+using Faker.Extensions;
 
 namespace JimmyJohnsAutomation.Steps
 {
@@ -34,7 +35,7 @@ namespace JimmyJohnsAutomation.Steps
 
             FirstNameTextBox.SendKeys(Name.First());
             LastNameTextBox.SendKeys(Name.Last());
-            PhoneNumberTextBox.SendKeys(Phone.Number());
+            PhoneNumberTextBox.SendKeys(Faker.Phone.CellNumber());
             EmailTextBox.SendKeys(email);
             ConfirmEmailTextBox.SendKeys(email);
             PasswordTextBox.SendKeys(password);
