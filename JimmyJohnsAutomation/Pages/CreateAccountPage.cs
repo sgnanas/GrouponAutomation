@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Faker;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -69,13 +70,16 @@ namespace JimmyJohnsAutomation.Pages
 
         public void CreateAccount()
         {
-            FirstNameTextBox.SendKeys("Jimmy7");
-            LastNameTextBox.SendKeys("JOBO7");
-            PhoneNumberTextBox.SendKeys("3039139999");
-            EmailTextBox.SendKeys("ktice@blah7.com");
-            ConfirmEmailTextBox.SendKeys("ktice@blah7.com");
-            PasswordTextBox.SendKeys("BlahPassword6");
-            PasswordConfirmTextBox.SendKeys("BlahPassword6");
+            string email = Internet.Email();
+            string password = "BlahPassword6";
+
+            FirstNameTextBox.SendKeys(Name.First());
+            LastNameTextBox.SendKeys(Name.Last());
+            PhoneNumberTextBox.SendKeys(Faker.Phone.CellNumber());
+            EmailTextBox.SendKeys(email);
+            ConfirmEmailTextBox.SendKeys(email);
+            PasswordTextBox.SendKeys(password);
+            PasswordConfirmTextBox.SendKeys(password);
             TermsAndConditionsCheckBox.Click();
             CreateAccountButton.Click();
         }
