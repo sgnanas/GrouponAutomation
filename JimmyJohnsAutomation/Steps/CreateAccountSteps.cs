@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Faker;
+using OpenQA.Selenium.Support.UI;
 
 namespace JimmyJohnsAutomation.Steps
 {
@@ -26,9 +27,7 @@ namespace JimmyJohnsAutomation.Steps
             IWebElement PasswordTextBox = driver.FindElement(By.XPath("//input[@id='password']"));
             IWebElement PasswordConfirmTextBox = driver.FindElement(By.XPath("//input[@id='passwordConfirm']"));
             IWebElement TermsAndConditionsCheckBox = driver.FindElement(By.XPath("//a[@id='chkTermsAndConditions']"));
-            IWebElement CreateAccountButton = driver.FindElement(By.CssSelector("//a[@id='createAccountBtn']"));
-
-
+            IWebElement CreateAccountButton = driver.FindElement(By.CssSelector("#createAccountBtn"));
 
             string email = Internet.Email();
             string password = "BlahPassword6";
@@ -48,8 +47,12 @@ namespace JimmyJohnsAutomation.Steps
         [Then(@"the Jimmy John user is created")]
         public void ThenTheJimmyJohnUserIsCreated()
         {
-            IWebElement StartAnOrderText = 
-                driver.FindElement(By.XPath("//h1[contains(text(),'Start an Order')]"));
+            //IWebElement StartAnOrderText = 
+            //    driver.FindElement(By.XPath("//h1[contains(text(),'Start an Order')]"));
+
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementExists(By.XPath("//h1[contains(text(),'Start an Order')]")));
         }
 
 
