@@ -52,7 +52,7 @@ namespace JimmyJohnsAutomation.Steps
             //    driver.FindElement(By.XPath("//h1[contains(text(),'Start an Order')]"));
 
 
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementExists(By.XPath("//h1[contains(text(),'Start an Order')]")));
         }
 

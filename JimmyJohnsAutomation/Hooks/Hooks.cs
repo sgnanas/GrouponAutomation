@@ -124,13 +124,17 @@ namespace JimmyJohnsAutomation.Hooks
 
                 case "firefox":
 
-                    //Environment.SetEnvironmentVariable("webdriver.gecko.driver", Path.Combine(GetBasePath, @"Drivers\geckodriver.exe"));
-                    
-                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(Path.Combine(GetBasePath, @"Drivers\"));
-                    service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    Environment.SetEnvironmentVariable("webdriver.gecko.driver", Path.Combine(GetBasePath, @"Drivers\geckodriver.exe"));
 
-                    //Instantiate Driver
-                    driver = new FirefoxDriver(service);
+                    //FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(Path.Combine(GetBasePath, @"Drivers\"));
+                    //service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+
+                    ////Instantiate Driver
+                    //driver = new FirefoxDriver(service);
+
+                    FirefoxOptions ffoptions = new FirefoxOptions();
+                    ffoptions.BrowserExecutableLocation = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    driver = new FirefoxDriver(ffoptions);
 
                     //Set Implicit Wait time to 10 seconds
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
