@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace JimmyJohnsAutomation.Pages
 {
-    class LoginPage
+    public class LoginPage
     {
         [FindsBy(How = How.XPath, Using = "//a[@title='Click to Create an account']")]
         [CacheLookup]
@@ -24,9 +24,11 @@ namespace JimmyJohnsAutomation.Pages
 
         public IWebDriver Driver { get; set; }
 
-        public void GoToCreateAccountPage()
+        public CreateAccountPage GoToCreateAccountPage()
         {
             CreateAccountLink.Click();
+
+            return new CreateAccountPage(this.Driver);
         }
     }
 }

@@ -18,21 +18,25 @@ namespace JimmyJohnsAutomation.Pages
 
         public HomePage(IWebDriver driver)
         {
-            this.Driver = driver;
+            Driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
 
         public IWebDriver Driver { get; set; }
 
-        public void GoToHomePage()
+        public HomePage GoToHomePage()
         {
             Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings ["HomePageURL"]);
+
+            return new HomePage(this.Driver);
         }
 
-        public void GoToLoginPage()
+        public LoginPage GoToLoginPage()
         {
             LoginButton.Click();
+
+            return new LoginPage(this.Driver);
         }
 
 

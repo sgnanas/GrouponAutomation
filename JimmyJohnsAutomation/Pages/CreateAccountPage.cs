@@ -12,6 +12,8 @@ namespace JimmyJohnsAutomation.Pages
     public class CreateAccountPage
     {
 
+        #region WebElements
+
         [FindsBy(How = How.XPath, Using = "//input[@name='FirstName']")]
         [CacheLookup]
         public IWebElement FirstNameTextBox { get; set; }
@@ -48,16 +50,11 @@ namespace JimmyJohnsAutomation.Pages
         [CacheLookup]
         public IWebElement CreateAccountButton { get; set; }
 
-        //IWebElement FirstNameTextBox = driver.FindElement(By.XPath("//input[@name='FirstName']"));
-        //IWebElement LastNameTextBox = driver.FindElement(By.XPath("//input[@name='LastName']"));
-        //IWebElement PhoneNumberTextBox = driver.FindElement(By.XPath("//input[@id='phone_0']"));
-        //IWebElement EmailTextBox = driver.FindElement(By.XPath("//input[@id='email']"));
-        //IWebElement ConfirmEmailTextBox = driver.FindElement(By.XPath("//input[@id='emailConfirm']"));
-        //IWebElement PasswordTextBox = driver.FindElement(By.XPath("//input[@id='password']"));
-        //IWebElement PasswordConfirmTextBox = driver.FindElement(By.XPath("//input[@id='passwordConfirm']"));
-        //IWebElement TermsAndConditionsCheckBox = driver.FindElement(By.XPath("//a[@id='chkTermsAndConditions']"));
-        //IWebElement CreateAccountButton = driver.FindElement(By.XPath("//a[@id='createAccountBtn']"));
 
+        #endregion
+
+
+        #region Constructor
 
         public CreateAccountPage(IWebDriver driver)
         {
@@ -67,6 +64,12 @@ namespace JimmyJohnsAutomation.Pages
 
 
         public IWebDriver Driver { get; set; }
+
+
+        #endregion
+
+
+        #region Actions
 
         public void CreateAccount()
         {
@@ -99,5 +102,8 @@ namespace JimmyJohnsAutomation.Pages
             TermsAndConditionsCheckBox.Click();
             CreateAccountButton.Click();
         }
+
+        #endregion 
+
     }
 }
