@@ -9,7 +9,7 @@ Background: Navigate to the Jimmy John Home Page
 @SMOKE
 Scenario: Create a Jimmy Johns user account
 	Given I go to the Create account page
-	When I create a new account
+	When I create a new account with a Page Object
 	Then the Jimmy John user is created
 
 

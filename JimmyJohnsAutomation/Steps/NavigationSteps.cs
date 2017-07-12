@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using JimmyJohnsAutomation.Pages;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
@@ -17,19 +18,19 @@ namespace JimmyJohnsAutomation.Steps
 
         [Given(@"I go to the Jimmy John Home Page")]
         public void GivenIGoToTheJimmyJohnHomePage()
-        {
-            
-            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["HomePageURL"]);
+        {           
+            HomePage homePage = new HomePage(driver);
+            homePage.GoToHomePage();
         }
 
         [Given(@"I go to the Create account page")]
         public void GivenIGoToTheCreateAccountPage()
         {
-            IWebElement loginButton = driver.FindElement(By.Id("linkOderLogin"));
-            loginButton.Click();
+            HomePage homePage = new HomePage(driver);
+            homePage.GoToLoginPage();
 
-            IWebElement createNewAccountLink = driver.FindElement(By.XPath("//a[@title='Click to Create an account']"));
-            createNewAccountLink.Click();
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.GoToCreateAccountPage();
         }
 
     }

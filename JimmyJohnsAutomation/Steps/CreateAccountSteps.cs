@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 using Faker;
 using OpenQA.Selenium.Support.UI;
 using Faker.Extensions;
+using JimmyJohnsAutomation.Pages;
 
 namespace JimmyJohnsAutomation.Steps
 {
@@ -33,9 +34,27 @@ namespace JimmyJohnsAutomation.Steps
             string email = Internet.Email();
             string password = "BlahPassword6";
 
+
+            string phone = Phone.Number();
+            if (phone.Substring(0, 2).Equals("1-"))
+            {
+                phone = phone.Substring(2, phone.Length - 2);
+            }
+            if (phone.Contains("x"))
+            {
+                int index = phone.IndexOf("x");
+                phone = phone.Remove(index - 1);
+            }
+            phone = phone.Replace(".", "");
+            phone = phone.Replace("-", "");
+            phone = phone.Replace("(", "");
+            phone = phone.Replace(")", "");
+            phone = phone.Replace(" ", "");
+        
+
             FirstNameTextBox.SendKeys(Name.First());
             LastNameTextBox.SendKeys(Name.Last());
-            PhoneNumberTextBox.SendKeys(Faker.Phone.CellNumber());
+            PhoneNumberTextBox.SendKeys(phone);
             EmailTextBox.SendKeys(email);
             ConfirmEmailTextBox.SendKeys(email);
             PasswordTextBox.SendKeys(password);
@@ -45,6 +64,15 @@ namespace JimmyJohnsAutomation.Steps
 
         }
 
+        [When(@"I create a new account with a Page Object")]
+        public void WhenICreateANewAccountWithAPageObject()
+        {
+            CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+            createAccountPage.CreateAccount();
+            
+        }
+
+        
         [Then(@"the Jimmy John user is created")]
         public void ThenTheJimmyJohnUserIsCreated()
         {
