@@ -11,9 +11,16 @@ namespace JimmyJohnsAutomation.Pages
 {
     public class LoginPage
     {
+        #region WebElements
+
         [FindsBy(How = How.XPath, Using = "//a[@title='Click to Create an account']")]
         [CacheLookup]
         public IWebElement CreateAccountLink { get; set; }
+
+        #endregion
+
+
+        #region Constructor
 
         public LoginPage(IWebDriver driver)
         {
@@ -21,8 +28,12 @@ namespace JimmyJohnsAutomation.Pages
             PageFactory.InitElements(driver, this);
         }
 
-
         public IWebDriver Driver { get; set; }
+
+        #endregion
+
+
+        #region Actions
 
         public CreateAccountPage GoToCreateAccountPage()
         {
@@ -30,5 +41,9 @@ namespace JimmyJohnsAutomation.Pages
 
             return new CreateAccountPage(this.Driver);
         }
+
+
+        #endregion
+
     }
 }

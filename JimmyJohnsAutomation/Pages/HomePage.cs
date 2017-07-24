@@ -12,9 +12,16 @@ namespace JimmyJohnsAutomation.Pages
     public class HomePage
     {
 
+        #region WebElements
+
         [FindsBy(How = How.Id, Using = "linkOderLogin")]
         [CacheLookup]
         public IWebElement LoginButton { get; set; }
+
+        #endregion
+
+
+        #region Constructor
 
         public HomePage(IWebDriver driver)
         {
@@ -24,6 +31,11 @@ namespace JimmyJohnsAutomation.Pages
 
 
         public IWebDriver Driver { get; set; }
+
+        #endregion
+
+
+        #region Actions
 
         public HomePage GoToHomePage()
         {
@@ -39,6 +51,6 @@ namespace JimmyJohnsAutomation.Pages
             return new LoginPage(this.Driver);
         }
 
-
+        #endregion
     }
 }
