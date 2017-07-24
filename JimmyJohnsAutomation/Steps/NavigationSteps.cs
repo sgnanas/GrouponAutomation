@@ -34,5 +34,21 @@ namespace JimmyJohnsAutomation.Steps
             loginPage.GoToCreateAccountPage();
         }
 
+
+        [When(@"I use the menu to navigate to the Menu Page")]
+        public void WhenIUseTheMenuToNavigateToTheMenuPage()
+        {
+            JJMenuPage jjMenuPage = new JJMenuPage(driver);
+            jjMenuPage.GoToMenuPage();
+        }
+
+
+        [Then(@"the Menu Page is displayed")]
+        public void ThenTheMenuPageIsDisplayed()
+        {
+            MenuPage menuPage = new MenuPage(driver);
+            menuPage.VerifyMenuPageLoaded();
+        }
+
     }
 }

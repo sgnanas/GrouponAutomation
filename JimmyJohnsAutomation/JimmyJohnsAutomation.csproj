@@ -91,10 +91,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateAccount.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Menu.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.feature</DependentUpon>
+    </Compile>
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Pages\CreateAccountPage.cs" />
+    <Compile Include="Pages\JJMenuPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
+    <Compile Include="Pages\MenuPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\CreateAccountSteps.cs" />
     <Compile Include="Steps\NavigationSteps.cs" />
@@ -107,6 +114,10 @@
     <None Include="Features\CreateAccount.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateAccount.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Menu.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Menu.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
