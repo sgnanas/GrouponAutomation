@@ -20,7 +20,8 @@ namespace JimmyJohnsAutomation.Steps
         public void GivenIGoToTheJimmyJohnHomePage()
         {           
             HomePage homePage = new HomePage(driver);
-            homePage.GoToHomePage();
+            homePage
+                .GoToHomePage();
         }
 
         [Given(@"I go to the Create account page")]
