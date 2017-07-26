@@ -53,7 +53,7 @@ namespace JimmyJohnsAutomation.Pages
         public MenuPage GoToMenuPage()
         {
             MenuLink.Click();
-
+            
             return new MenuPage(this.Driver);
         }
 

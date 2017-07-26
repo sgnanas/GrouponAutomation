@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JimmyJohnsAutomation.WebDriverExtensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -32,8 +33,8 @@ namespace JimmyJohnsAutomation.Pages
 
         public MenuPage VerifyMenuPageLoaded()
         {
-            WebDriverWait wait = new WebDriverWait(this.Driver, TimeSpan.FromSeconds(20));
-            wait.Until(ExpectedConditions.ElementExists(By.XPath("//a[@class='tab menuTab pie']")));
+     
+            JJMenusTab.WaitForVisible(true, 1000);
 
             return new MenuPage(this.Driver);
         }

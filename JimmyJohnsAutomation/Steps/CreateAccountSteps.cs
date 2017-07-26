@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 using Faker;
 using OpenQA.Selenium.Support.UI;
 using Faker.Extensions;
+using JimmyJohnsAutomation.WebDriverExtensions;
 using JimmyJohnsAutomation.Pages;
 
 namespace JimmyJohnsAutomation.Steps
@@ -51,15 +52,15 @@ namespace JimmyJohnsAutomation.Steps
             phone = phone.Replace(")", "");
             phone = phone.Replace(" ", "");
         
-
-            FirstNameTextBox.SendKeys(Name.First());
-            LastNameTextBox.SendKeys(Name.Last());
-            PhoneNumberTextBox.SendKeys(phone);
-            EmailTextBox.SendKeys(email);
-            ConfirmEmailTextBox.SendKeys(email);
-            PasswordTextBox.SendKeys(password);
-            PasswordConfirmTextBox.SendKeys(password);
-            TermsAndConditionsCheckBox.Click();
+            
+            FirstNameTextBox.SetText(Name.First());
+            LastNameTextBox.SetText(Name.Last());
+            PhoneNumberTextBox.SetText(phone);
+            EmailTextBox.SetText(email);
+            ConfirmEmailTextBox.SetText(email);
+            PasswordTextBox.SetText(password);
+            PasswordConfirmTextBox.SetText(password);
+            TermsAndConditionsCheckBox.SetCheckbox(true);
             CreateAccountButton.Click();
 
         }
