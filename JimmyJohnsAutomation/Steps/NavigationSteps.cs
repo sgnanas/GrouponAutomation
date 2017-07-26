@@ -13,7 +13,7 @@ namespace JimmyJohnsAutomation.Steps
     public sealed class NavigationSteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
-
+        //change for git 
         IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>("IWebDriver");
 
         [Given(@"I go to the Jimmy John Home Page")]
