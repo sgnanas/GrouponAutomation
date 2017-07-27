@@ -96,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Menu.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\StartAnOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StartAnOrder.feature</DependentUpon>
+    </Compile>
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Pages\CreateAccountPage.cs" />
     <Compile Include="Pages\JJMenuPage.cs" />
@@ -119,6 +124,10 @@
     <None Include="Features\Menu.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Menu.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\StartAnOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StartAnOrder.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
