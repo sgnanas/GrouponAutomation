@@ -13,7 +13,9 @@ namespace JimmyJohnsAutomation.Pages
     {
 
         #region WebElements
-        
+        /// <summary>
+        /// //
+        /// </summary>
         [FindsBy(How = How.XPath, Using = "//input[@name='FirstName']")]
         [CacheLookup]
         public IWebElement FirstNameTextBox { get; set; }
