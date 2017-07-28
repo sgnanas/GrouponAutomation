@@ -10,7 +10,7 @@ namespace JimmyJohnsAutomation.Pages
 {
     public class JJMenuPage
     {
-        [FindsBy(How = How.XPath, Using = "//a[@href='/menu/']")]
+        [FindsBy(How = How.XPath, Using = "//ul[@id='ulDesktopNav']//a[@href='/menu/']")]
         [CacheLookup]
         public IWebElement MenuLink { get; set; }
 
@@ -52,10 +52,13 @@ namespace JimmyJohnsAutomation.Pages
 
         public MenuPage GoToMenuPage()
         {
+
             MenuLink.Click();
-            
+
             return new MenuPage(this.Driver);
         }
+
+
 
         #endregion
     }
